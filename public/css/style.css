@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f4f4;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Caja principal */
+.register-box {
+  width: 70%;
+  max-width: 900px;
+  height: auto;
+  background: #e2dcdc;
+  display: flex;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* Izquierda */
+.left {
+  width: 45%;
+  background: #9fd7e7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left img {
+  width: 60%;
+}
+
+/* Derecha */
+.right {
+  width: 55%;
+  padding: 30px 40px;
+}
+
+/* Título */
+.right h2 {
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Subtitulo */
+.sub {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.sub a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Formulario */
+form {
+  width: 100%;
+}
+
+/* Labels */
+label {
+  font-size: 13px;
+  margin-bottom: 5px;
+  display: block;
+  color: #555;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* Botón */
+.btn {
+  width: 100%;
+  background: #9fd7e7;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #7fc3d9;
+  
+}
+
+
+/* Contenedor de los campos en 2 columnas */
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Inputs más compactos */
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Botón centrado y más elegante */
+.btn {
+  width: 100%;
+  background: #9fd7e7;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #7fc3d9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .register-box {
+    flex-direction: column;
+  }
+
+  .left, .right {
+    width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+}
