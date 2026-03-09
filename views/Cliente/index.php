@@ -22,6 +22,7 @@
     </header>
 
     <nav>
+        <a href="index.php?controller=cliente&action=index">Lociones</a>   
         <a href="views/Cliente/Camisetas.php">Camisetas</a>
         <a href="views/Cliente/Pantalones.php">Pantalones</a>
         <a href="views/Cliente/Bermudas.php">Bermudas</a>
@@ -39,7 +40,7 @@
         </div>
 
         <div class="product" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Versace-Eros-EDP_580x.webp" alt="Perfume 2">
+            <img src="./public/img/Cliente/Perfume2.jpg" alt="Perfume 2">
             <h3>Aromática fougère</h3>
             <p>Es una fragancia temporal que nos sirve para citas romanticas .</p>
             <p class="price">$160.000</p>
@@ -47,7 +48,7 @@
         </div>
 
         <div class="product" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/LATTAFA--BADEE-AL-OUD-BLACK-100ML-cosmeticos-en-linea.webp" alt="Perfume 3">
+            <img src="./public/img/Cliente/Perfume3.jpg" alt="Perfume 3">
             <h3>BADEE-AL-OUD-BLACK</h3>
             <p>Profunda mezcla de maderas ahumadas y especias intensas.</p>
             <p class="price">$150.000</p>
@@ -55,7 +56,7 @@
         </div>
 
         <div class="product" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/6291108733875.jpg.jpg" alt="Perfume 3">
+            <img src="./public/img/Cliente/Perfume4.jpg" alt="Perfume 4">
             <h3>Bade'e Al Oud Amethyst</h3>
             <p>Fragancia floral y dulce con suaves notas de maderas orientales.</p>
             <p class="price">$150.000</p>
@@ -63,7 +64,7 @@
         </div>
 
         <div class="product" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Khamrah_1.webp" alt="Perfume 3">
+            <img src="./public/img/Cliente/Perfume5.jpg" alt="Perfume 5">
             <h3>khamrah lattafa</h3>
             <p>Dulce mezcla de especias, frutas exóticas y maderas cálidas</p>
             <p class="price">$200.000</p>
@@ -71,7 +72,7 @@
         </div>
 
         <div class="product" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/image_8548c931-6413-4795-997a-0fba03d022da_1200x1200.webp" alt="Perfume 3">
+            <img src="./public/img/Cliente/Perfume6.jpg" alt="Perfume 6">
             <h3>Invictus Victory</h3>
             <p>Intensa combinación de especias frescas y maderas ambaradas.</p>
             <p class="price">$190.000</p>
@@ -79,8 +80,7 @@
         </div>
 
         <div class="product" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/9_pm_AFNAN_-_Eau_De_Parfum_-_100ml_-_Hombre_858e9405-d2de-43f5-8ef7-19ee8579492c_580x.webp"
-                alt="Perfume 3">
+            <img src="./public/img/Cliente/Perfume7.jpg" alt="Perfume 7">
             <h3>Afnan 9 pm</h3>
             <p>Aromática y seductora mezcla dulces y con toque calido.</p>
             <p class="price">$160.000</p>
@@ -88,7 +88,7 @@
         </div>
 
         <div class="product" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/w=1500,h=1500,fit=pad.webp" alt="Perfume 3">
+            <img src="./public/img/Cliente/Perfume8.jpg" alt="Perfume 8">
             <h3>Amber oud gold</h3>
             <p>Fragancia elegante que combina frutas dulces, ámbar y oud cálido.</p>
             <p class="price">$200.000</p>
@@ -96,8 +96,7 @@
         </div>
 
         <div class="product img-fi" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/lattafa-pride-of-lattafa-eau-de-parfum-100ml-hombre_b5c3a725-a818-4d33-8c95-a67507b9a1b9.avif"
-                alt="Perfume 3">
+            <img src="./public/img/Cliente/Perfume9.jpg" alt="Perfume 9">
             <h3>lattafa pride of fakhar</h3>
             <p>Fragancia floral y frutal realizada con una calidez del ámbar y maderas orientales.</p>
             <p class="price">$190.000</p>

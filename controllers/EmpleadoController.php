@@ -12,7 +12,6 @@ class EmpleadoController{
             header("Location: index.php?controller=auth&action=login");
             exit;
         }
-
         echo "Panel Empleado";
     }
 

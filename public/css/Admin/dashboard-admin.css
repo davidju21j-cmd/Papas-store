@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    background: #f5f6fa;
+}
+
+.sidebar {
+    width: 240px;
+    background: #1d1f27;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.sidebar nav a {
+    display: block;
+    padding: 12px;
+    color: #d0d0d0;
+    text-decoration: none;
+    margin: 5px 0;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: #3a3d45;
+    color: white;
+}
+
+.content {
+    margin-left: 260px;
+    padding: 30px;
+    width: calc(100% - 260px);
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px #00000020;
+    text-align: center;
+}
+
+.card .number {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.panel {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.panel-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px #00000020;
+}
+
+.fake-chart {
+    height: 200px;
+    background: linear-gradient(to top, #c5c5c5, #eeeeee);
+    border-radius: 8px;
+    margin-top: 12px;
+}
+
+table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}

@@ -22,9 +22,8 @@
     </header>
 
     <nav>
-     <a href="../../index.php?controller=cliente&action=index">Lociones</a>   
-      
-     <a href="Camisetas.php">Camisetas</a>
+        <a href="../../index.php?controller=cliente&action=index">Lociones</a>   
+        <a href="Camisetas.php">Camisetas</a>
         <a href="Pantalones.php">Pantalones</a>
         <a href="Bermudas.php">Bermudas</a>
         <a href="Gorras.php">Gorras</a>
@@ -33,7 +32,7 @@
 
     <div class="container">
         <div class="product img-fg" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantalon 1.jpeg" alt="Perfume 1">
+            <img src="../../public/img/Cliente/Pantalon 1.jpg" alt="Pantalon 1">
             <h3>Pantalon Diesel</h3>
             <p>Tiene una comodidad única y exclusiva</p>
             <p class="price">$160.000</p>
@@ -41,7 +40,7 @@
         </div>
 
         <div class="product img-fg" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantalon 2.jpeg" alt="Perfume 2">
+            <img src="../../public/img/Cliente/Pantalon 2.jpg" alt="Pantalon 2">
             <h3>Pantalon Dsquared</h3>
             <p>Tiene una comodidad única y exclusiva</p>
             <p class="price">$160.000</p>
@@ -49,7 +48,7 @@
         </div>
 
         <div class="product img-fe" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantalon 3.jpeg" alt="Perfume 3">
+            <img src="../../public/img/Cliente/Pantalon 3.jpg" alt="Pantalon 3">
             <h3>Pantalon Monastery</h3>
             <p>Tiene una comodidad única y exclusiva</p>
             <p class="price">$160.000</p>
@@ -57,7 +56,7 @@
         </div>
 
         <div class="product img-fa" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantalon 4.jpeg" alt="Perfume 3">
+            <img src="../../public/img/Cliente/Pantalon 4.jpg" alt="Pantalon 4">
             <h3>Pantalon Boss</h3>
             <p>Tiene una comodidad única y exclusiva</p>
             <p class="price">$110.000</p>
@@ -65,7 +64,7 @@
         </div>
 
         <div class="product img-fs" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantalon 5.jpeg" alt="Perfume 3">
+            <img src="../../public/img/Cliente/Pantalon 5.jpg" alt="Pantalon 5">
             <h3>Pantalon Boss</h3>
             <p>Tiene una comodidad única y exclusiva</p>
             <p class="price">$110.000</p>
@@ -73,7 +72,7 @@
         </div>
 
         <div class="product img-fc" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantalon 6.jpeg" alt="Perfume 3">
+            <img src="../../public/img/Cliente/Pantalon 6.jpg" alt="Pantalon 6">
             <h3>Pantalon Boss</h3>
             <p>Tiene una comodidad única y exclusiva</p>
             <p class="price">$110.000</p>
@@ -81,7 +80,7 @@
         </div>
 
         <div class="product img-fc" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantalon 7.jpeg" alt="Perfume 3">
+            <img src="../../public/img/Cliente/Pantalon 7.jpg" alt="Pantalon 7">
             <h3>Pantalon Boss</h3>
             <p>Tiene una comodidad única y exclusiva</p>
             <p class="price">$110.000</p>
@@ -89,7 +88,7 @@
         </div>
 
         <div class="product img-fs" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantalon 8.jpeg" alt="Perfume 3">
+            <img src="../../public/img/Cliente/Pantalon 8.jpg" alt="Pantalon 8">
             <h3>Pantalon Boss</h3>
             <p>Tiene una comodidad única y exclusiva</p>
             <p class="price">$110.000</p>

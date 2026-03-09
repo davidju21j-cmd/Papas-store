@@ -12,8 +12,9 @@ class AdminController{
             header("Location: index.php?controller=auth&action=login");
             exit;
         }
-
-        echo "Panel Administrador";
+        else{
+            require_once __DIR__."/../views/Admin/index.php";
+        }
     }
 
 }

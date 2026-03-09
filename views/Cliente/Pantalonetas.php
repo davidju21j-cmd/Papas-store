@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Papas Store - Tu tienda de ropa</title>
-    <link rel="stylesheet" href="public/css/Cliente/cliente.css">
+    <link rel="stylesheet" href="../../public/css/Cliente/cliente.css">
 
 </head>
 
@@ -22,17 +22,17 @@
     </header>
 
     <nav>
-        <a href="../../index.php?controller=cliente&action=index">Lociones</a>
-       <a href="views/Cliente/Camisetas.php">Camisetas</a>
-        <a href="views/Cliente/Pantalones.php">Pantalones</a>
-        <a href="views/Cliente/Bermudas.php">Bermudas</a>
-        <a href="views/Cliente/Gorras.php">Gorras</a>
-        <a href="views/Cliente/Pantalonetas.php">Pantalonetas</a>
+        <a href="../../index.php?controller=cliente&action=index">Lociones</a>   
+        <a href="Camisetas.php">Camisetas</a>
+        <a href="Pantalones.php">Pantalones</a>
+        <a href="Bermudas.php">Bermudas</a>
+        <a href="Gorras.php">Gorras</a>
+        <a href="Pantalonetas.php">Pantalonetas</a>
     </nav>
 
     <div class="container">
         <div class="product img-fj" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantaloneta1.jpeg" alt="Perfume 1">
+            <img src="../../public/img/Cliente/Pantaloneta1.jpg" alt="Pantalonta 1">
             <h3>Pantaloneta jordan</h3>
             <p>Está Pantaloneta es muy comoda y fresca..</p>
             <p class="price">$70.000</p>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="product img-fm" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantaloneta2.jpeg" alt="Perfume 2">
+            <img src="../../public/img/Cliente/Pantaloneta2.jpg" alt="Pantalonta 2">
             <h3>Pantaloneta jordan</h3>
             <p>Está Pantaloneta es muy comoda y fresca.</p>
             <p class="price">$70.000</p>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="product img-fj" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantaloneta3.jpeg" alt="Perfume 3">
+            <img src="../../public/img/Cliente/Pantaloneta3.jpg" alt="Pantalonta 3">
             <h3>Pantaloneta jordan</h3>
             <p>Está Pantaloneta es muy comoda y fresca.</p>
             <p class="price">$70.000</p>
@@ -56,7 +56,7 @@
         </div>
 
         <div class="product img-fz" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantaloneta4.jpeg" alt="Perfume 3">
+            <img src="../../public/img/Cliente/Pantaloneta4.jpg" alt="Pantalonta 4">
             <h3>Pantaloneta jordan</h3>
             <p>Está Pantaloneta es muy comoda y fresca.</p>
             <p class="price">$70.000</p>
@@ -64,7 +64,7 @@
         </div>
 
         <div class="product img-fm" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantaloneta5.jpeg" alt="Perfume 3">
+            <img src="../../public/img/Cliente/Pantaloneta5.jpg" alt="Pantalonta 5">
             <h3>Pantaloneta jordan</h3>
             <p>Está Pantaloneta es muy comoda y fresca.</p>
             <p class="price">$70.000</p>
@@ -72,7 +72,7 @@
         </div>
 
         <div class="product img-fa" onclick="location.href='index.html';" style="cursor:pointer;">
-            <img src="/img/Pantaloneta6.jpeg" alt="Perfume 3">
+            <img src="../../public/img/Cliente/Pantaloneta6.jpg" alt="Pantalonta 6">
             <h3>Pantaloneta jordan</h3>
             <p>Está Pantaloneta es muy comoda y fresca.</p>
             <p class="price">$70.000</p>
