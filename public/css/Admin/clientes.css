@@ -1,0 +1,112 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    background: #f6f7fb;
+}
+
+
+.sidebar {
+    width: 200px;
+    background: #1d1f27;
+    height: 100vh;
+    padding: 20px;
+    color: #fff;
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.sidebar nav a {
+    display: block;
+    padding: 12px;
+    color: #d0d0d0;
+    text-decoration: none;
+    margin: 5px 0;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: #2a2c34;
+    color: #fff;
+}
+
+
+.content {
+    flex: 1;
+    padding: 30px 40px;
+}
+
+.titulo {
+    font-size: 32px;
+    margin: 0;
+}
+
+
+.acciones {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+}
+
+.buscador {
+    padding: 10px 14px;
+    width: 260px;
+    border: 1px solid #d2d2d2;
+    border-radius: 8px;
+    outline: none;
+}
+
+
+.btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.agregar {
+    background: #3b82f6;
+}
+
+.editar {
+    background: #14b8a6;
+}
+
+.eliminar {
+    background: #ef4444;
+}
+
+
+.tabla-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla th,
+.tabla td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.tabla th {
+    background: #f5f6fa;
+}
+
+.tabla tr:hover {
+    background: #f1f5f9;
+}

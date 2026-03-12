@@ -32,9 +32,7 @@
 
 <p>¿No tienes cuenta?</p>
 
-<a href="index.php?controller=auth&action=register">
-Registrarse
-</a>
+<a href="index.php?controller=auth&action=register">Registrarse</a>
 
 </div>
 </div>
