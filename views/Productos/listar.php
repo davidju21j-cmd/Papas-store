@@ -185,7 +185,7 @@ function cerrarModal(){
     document.getElementById("modal").style.display = "none";
 }
 
-// VALIDACIONES 
+// VALIDACIONES (las que sí funcionan)
 document.getElementById("form").addEventListener("submit", function(e){
 
     let errores = [];

@@ -16,7 +16,7 @@
         <p>Tu tienda de ropa exclusiva</p>
         <div class="header-buttons">
             <a href="Login.html">
-                <button class="btn">Inicia Sesión</button>
+                <button class="btn">Cerrar Sesión</button>
                 </a>
                    </div>
     </header>

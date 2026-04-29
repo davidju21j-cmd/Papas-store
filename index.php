@@ -2,31 +2,27 @@
 
 session_start();
 
-$controller = $_GET['controller'] ?? 'auth';
+$controller = strtolower($_GET['controller'] ?? 'auth');
 $action = $_GET['action'] ?? 'login';
 
-$controllerClass = ucfirst($controller)."Controller";
-$controllerFile = __DIR__."/controllers/".$controllerClass.".php";
+$controllerClass = ucfirst($controller) . "Controller";
+$controllerFile = __DIR__ . "/controllers/" . $controllerClass . ".php";
 
-// Cargar controlador
-if(file_exists($controllerFile)){
-    require_once $controllerFile;
-}else{
-    die("Controller no encontrado: ".$controllerClass);
+if(!file_exists($controllerFile)){
+    die("Controlador no encontrado: " . $controllerFile);
 }
 
-// Crear objeto controlador
+require_once $controllerFile;
+
 if(!class_exists($controllerClass)){
-    die("Clase no encontrada: ".$controllerClass);
+    die("La clase no existe: " . $controllerClass);
 }
 
-$controllerObj = new $controllerClass();
+$obj = new $controllerClass();
 
-// Ejecutar acción
-if(method_exists($controllerObj,$action)){
-    $controllerObj->$action();
+if(method_exists($obj, $action)){
+    $obj->$action();
 }else{
-    die("La acción no existe");
+    die("Acción no existe: " . $action);
 }
-
 ?>

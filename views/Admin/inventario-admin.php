@@ -14,15 +14,22 @@
     <header class="sidebar">
         <h2 class="logo">Papas Store</h2>
         <nav>
-            <a href="../../index.php?controller=admin&action=index">Dashboard</a>
-            <a href="productos-admin.php">Productos</a>
-            <a href="inventario-admin.php">Inventario</a>
-            <a href="pedidos-admin.php">Pedidos</a>
-            <a href="cliente-admin.php">Clientes</a>
-            <a href="proveedores-admin.php">Proveedores</a>
-            <a href="usuarios-admin.php">Usuarios</a>
-            <a href="reportes-admin.php">Reportes</a>
-            <a href="configuracion-admin.php">Configuración</a>
+            
+        <a href="/PAPAS-STORE/index.php?controller=admin&action=index">Dashboard</a>
+        <a href="/PAPAS-STORE/index.php?controller=Productos&action=index">Productos</a>
+        <a href="/PAPAS-STORE/views/Admin/Marcas-admin.php">Marcas</a>
+        <a href="/PAPAS-STORE/views/Admin/inventario-admin.php">Inventario</a>
+        <a href="/PAPAS-STORE/views/Admin/pedidos-admin.php">Pedidos</a>
+        <a href="/PAPAS-STORE/views/Admin/cliente-admin.php">Clientes</a>
+        <a href="/PAPAS-STORE/views/Admin/proveedores-admin.php">Proveedores</a>
+        <a href="/PAPAS-STORE/index.php?controller=admin&action=usuarios">Usuarios</a>
+        <a href="/PAPAS-STORE/views/Admin/reportes-admin.php">Reportes</a>
+        <a href="/PAPAS-STORE/views/Admin/configuracion-admin.php">Configuración</a>
+
+            <!-- Cerrar sesión -->
+            <a href="/PAPAS-STORE/index.php?controller=auth&action=logout" class="logout-btn" onclick="confirmarLogout()">
+                Cerrar sesión
+            </a>
         </nav>
     </header>
 

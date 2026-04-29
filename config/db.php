@@ -10,7 +10,7 @@ class Database{
         "localhost",// Servidor
         "root",// Usuario
         "",// Contraseña
-        "papas store"// Nombre de la base de datos
+        "papas_store"// Nombre de la base de datos
     );
 
     if($conexion->connect_errno){

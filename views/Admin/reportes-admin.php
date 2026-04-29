@@ -3,62 +3,121 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportes - Papas Store</title>
-    <link rel="stylesheet" href="../../public/css/Admin/reportes-admin.css">
+    <link rel="stylesheet" href="/PAPAS-STORE/public/css/Admin/reportes-admin.css">
+
+<style>
+body{margin:0;font-family:Arial;display:flex;}
+.sidebar{width:220px;background:#1e1e2f;color:white;height:100vh;padding:20px;}
+.sidebar a{display:block;color:white;padding:10px;margin:5px 0;text-decoration:none;}
+.sidebar a:hover{background:#333;}
+.content{flex:1;padding:20px;background:#f4f4f4;}
+
+.header{display:flex;justify-content:space-between;align-items:center;}
+
+.btn-logout{background:red;color:white;padding:8px;border:none;text-decoration:none;}
+
+.tabla-container{background:white;padding:20px;border-radius:10px;}
+
+.filtros{display:flex;gap:10px;margin-bottom:20px;}
+
+.input-select,.input-date{
+    padding:8px;
+}
+
+.btn-generar{
+    background:#28a745;
+    color:white;
+    border:none;
+    padding:8px 15px;
+}
+
+.reporte-box{
+    padding:20px;
+    background:#eee;
+    border-radius:10px;
+}
+</style>
+
 </head>
 
 <body>
 
-    <!-- /Contenido donde esta cada modulo/ -->
-    <header class="sidebar">
-        <h2>Papas Store</h2>
-        <nav>
-            <a href="../../index.php?controller=admin&action=index">Dashboard</a>
-            <a href="productos-admin.php">Productos</a>
-            <a href="inventario-admin.php">Inventario</a>
-            <a href="pedidos-admin.php">Pedidos</a>
-            <a href="cliente-admin.php">Clientes</a>
-            <a href="proveedores-admin.php">Proveedores</a>
-            <a href="usuarios-admin.php">Usuarios</a>
-            <a href="reportes-admin.php">Reportes</a>
-            <a href="configuracion-admin.php">Configuración</a>
-        </nav>
-    </header>
+<header class="sidebar">
+    <h2>Papas Store</h2>
+    <nav>
+       <a href="/PAPAS-STORE/index.php?controller=admin&action=index">Dashboard</a>
+        <a href="/PAPAS-STORE/index.php?controller=Productos&action=index">Productos</a>
+        <a href="/PAPAS-STORE/views/Admin/Marcas-admin.php">Marcas</a>
+        <a href="/PAPAS-STORE/views/Admin/inventario-admin.php">Inventario</a>
+        <a href="/PAPAS-STORE/views/Admin/pedidos-admin.php">Pedidos</a>
+        <a href="/PAPAS-STORE/views/Admin/cliente-admin.php">Clientes</a>
+        <a href="/PAPAS-STORE/views/Admin/proveedores-admin.php">Proveedores</a>
+        <a href="/PAPAS-STORE/index.php?controller=admin&action=usuarios">Usuarios</a>
+        <a href="/PAPAS-STORE/views/Admin/reportes-admin.php">Reportes</a>
+        <a href="/PAPAS-STORE/views/Admin/configuracion-admin.php">Configuración</a>
 
-    <!-- contenido principal -->
-    <main class="content">
+        <!-- Cerrar sesión -->
+            <a href="/PAPAS-STORE/index.php?controller=auth&action=logout" class="logout-btn" onclick="confirmarLogout()">
+                Cerrar sesión
+            </a>
+    </nav>
+</header>
 
-        <div class="header">
-            <h1>Reportes del Sistema</h1>
-        </div>
-        
-        <!-- Tabla para cada reporte -->
-        <div class="tabla-container">
+<main class="content">
 
-            <div class="filtros">
-                <select class="input-select">
-                    <option>Seleccionar reporte</option>
-                    <option>Ventas por fecha</option>
-                    <option>Pedidos por estado</option>
-                    <option>Productos más vendidos</option>
-                    <option>Ingresos totales</option>
-                </select>
+<div class="header">
+    <h1>Reportes del Sistema</h1>
 
-                <input type="date" class="input-date">
+    <a href="/PAPAS-STORE/index.php?controller=auth&action=logout" class="btn-logout">
+        Cerrar sesión
+    </a>
+</div>
 
+<div class="tabla-container">
 
-                <button class="btn-generar">Generar</button>
-            </div>
+<div class="filtros">
+    <select id="tipoReporte" class="input-select">
+        <option value="">Seleccionar reporte</option>
+        <option value="ventas">Ventas por fecha</option>
+        <option value="pedidos">Pedidos por estado</option>
+        <option value="productos">Productos más vendidos</option>
+        <option value="ingresos">Ingresos totales</option>
+    </select>
 
-            <div class="reporte-box">
-                <p class="placeholder">Aquí aparecerá el reporte generado...</p>
-            </div>
+    <input type="date" id="fecha" class="input-date">
 
-        </div>
+    <button class="btn-generar" onclick="generarReporte()">Generar</button>
+</div>
 
-    </main>
+<div class="reporte-box" id="resultado">
+    <p>Aquí aparecerá el reporte generado...</p>
+</div>
+
+</div>
+
+</main>
+
+<script>
+function generarReporte(){
+
+    let tipo = document.getElementById("tipoReporte").value;
+    let fecha = document.getElementById("fecha").value;
+
+    let resultado = document.getElementById("resultado");
+
+    if(tipo === ""){
+        resultado.innerHTML = "<p style='color:red;'>Seleccione un reporte</p>";
+        return;
+    }
+
+    resultado.innerHTML = `
+        <h3>Reporte generado</h3>
+        <p><strong>Tipo:</strong> ${tipo}</p>
+        <p><strong>Fecha:</strong> ${fecha || "No seleccionada"}</p>
+    `;
+}
+</script>
 
 </body>
-
 </html>

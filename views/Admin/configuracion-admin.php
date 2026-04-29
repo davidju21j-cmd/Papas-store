@@ -2,96 +2,133 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuración del Sistema - Papas Store</title>
-    <link rel="stylesheet" href="../../public/css/Admin/configuracion-admin.css">
+<meta charset="UTF-8">
+<title>Configuración</title>
+
+<link rel="stylesheet" href="/PAPAS-STORE/public/css/Admin/configuracion-admin.css">
+
+<style>
+body{margin:0;font-family:Arial;display:flex;}
+.sidebar{width:220px;background:#1e1e2f;color:white;height:100vh;padding:20px;}
+.sidebar a{display:block;color:white;padding:10px;margin:5px 0;text-decoration:none;}
+.sidebar a:hover{background:#333;}
+.content{flex:1;padding:20px;background:#f4f4f4;}
+
+.settings-container{
+    display:flex;
+    gap:20px;
+}
+
+.setting-box{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:30%;
+}
+
+.setting-box input, .setting-box select{
+    width:100%;
+    margin:5px 0;
+    padding:8px;
+}
+
+.btn-guardar{
+    background:#28a745;
+    color:white;
+    padding:8px;
+    border:none;
+}
+
+.btn-logout{
+    background:red;
+    color:white;
+    padding:8px;
+    text-decoration:none;
+}
+</style>
+
 </head>
 
 <body>
 
-    <!-- /Contenido donde esta cada modulo/ -->
-    <header class="sidebar">
-        <h2>Papas Store</h2>
-        <nav>
-            <a href="../../index.php?controller=admin&action=index">Dashboard</a>
-            <a href="productos-admin.php">Productos</a>
-            <a href="inventario-admin.php">Inventario</a>
-            <a href="pedidos-admin.php">Pedidos</a>
-            <a href="cliente-admin.php">Clientes</a>
-            <a href="proveedores-admin.php">Proveedores</a>
-            <a href="usuarios-admin.php">Usuarios</a>
-            <a href="reportes-admin.php">Reportes</a>
-            <a href="configuracion-admin.php">Configuración</a>
-        </nav>
-    </header>
+<header class="sidebar">
+<h2>Papas Store</h2>
 
-    <!-- contenido principal -->
-    <main class="content">
+<nav>
+        <a href="/PAPAS-STORE/index.php?controller=admin&action=index">Dashboard</a>
+        <a href="/PAPAS-STORE/index.php?controller=Productos&action=index">Productos</a>
+        <a href="/PAPAS-STORE/views/Admin/Marcas-admin.php">Marcas</a>
+        <a href="/PAPAS-STORE/views/Admin/inventario-admin.php">Inventario</a>
+        <a href="/PAPAS-STORE/views/Admin/pedidos-admin.php">Pedidos</a>
+        <a href="/PAPAS-STORE/views/Admin/cliente-admin.php">Clientes</a>
+        <a href="/PAPAS-STORE/views/Admin/proveedores-admin.php">Proveedores</a>
+        <a href="/PAPAS-STORE/index.php?controller=admin&action=usuarios">Usuarios</a>
+        <a href="/PAPAS-STORE/views/Admin/reportes-admin.php">Reportes</a>
+        <a href="/PAPAS-STORE/views/Admin/configuracion-admin.php">Configuración</a>
 
-        <div class="header">
-            <h1>Configuración del Sistema</h1>
-        </div>
+    <!-- Cerrar sesión -->
+            <a href="/PAPAS-STORE/index.php?controller=auth&action=logout" class="logout-btn" onclick="confirmarLogout()">
+                Cerrar sesión
+            </a>
+</nav>
+</header>
 
-        <!-- Tarjetas de Configuración del sistema -->
-        <div class="settings-container">
+<main class="content">
 
-            <div class="setting-box">
-                <h3>Datos de la tienda</h3>
-                <label>Nombre de la tienda</label>
-                <input type="text" placeholder="Papas Store">
+<div style="display:flex;justify-content:space-between;">
+    <h1>Configuración del Sistema</h1>
 
-                <label>Correo de contacto</label>
-                <input type="email" placeholder="contacto@example.com">
+    <a href="/PAPAS-STORE/index.php?controller=auth&action=logout" class="btn-logout">
+        Cerrar sesión
+    </a>
+</div>
 
-                <label>Teléfono</label>
-                <input type="text" placeholder="300 000 0000">
+<div class="settings-container">
 
-                <button class="btn-guardar">Guardar cambios</button>
-            </div>
+<div class="setting-box">
+<h3>Datos de la tienda</h3>
 
-            <div class="setting-box">
-                <h3>Preferencias del sistema</h3>
-                <label>Tema</label>
-                <select>
-                    <option>Claro</option>
-                    <option>Oscuro</option>
-                </select>
+<input id="nombre" placeholder="Nombre tienda">
+<input id="correo" placeholder="Correo">
+<input id="telefono" placeholder="Teléfono">
 
-                <label>Idioma</label>
-                <select>
-                    <option>Español</option>
-                    <option>Inglés</option>
-                </select>
+<button class="btn-guardar" onclick="guardar()">Guardar</button>
+</div>
 
-                <label>Zona horaria</label>
-                <select>
-                    <option>GMT-5 (Colombia)</option>
-                    <option>GMT-6</option>
-                    <option>GMT-4</option>
-                </select>
+<div class="setting-box">
+<h3>Preferencias</h3>
 
-                <button class="btn-guardar">Guardar cambios</button>
-            </div>
+<select id="tema">
+<option>Claro</option>
+<option>Oscuro</option>
+</select>
 
-            <div class="setting-box">
-                <h3>Seguridad</h3>
-                <label>Contraseña actual</label>
-                <input type="password">
+<select id="idioma">
+<option>Español</option>
+<option>Inglés</option>
+</select>
 
-                <label>Nueva contraseña</label>
-                <input type="password">
+<button class="btn-guardar" onclick="guardar()">Guardar</button>
+</div>
 
-                <label>Confirmar nueva contraseña</label>
-                <input type="password">
+<div class="setting-box">
+<h3>Seguridad</h3>
 
-                <button class="btn-guardar">Actualizar contraseña</button>
-            </div>
+<input type="password" id="actual" placeholder="Actual">
+<input type="password" id="nueva" placeholder="Nueva">
 
-        </div>
+<button class="btn-guardar" onclick="guardar()">Actualizar</button>
+</div>
 
-    </main>
+</div>
+
+</main>
+
+<script>
+function guardar(){
+    alert("Cambios guardados correctamente 🔥");
+}
+</script>
 
 </body>
-
 </html>

@@ -10,16 +10,18 @@
 
 <div class="Container">
 
-
     <div class="left-side">
-      <img src="/Papas-Store/public/img/Logo.jpeg" alt="Logo tienda">
+      <img src="/Papas-Store/public/img/Logo.jpeg">
     </div>
-
 
     <div class="right-side">
       <div class="login-container">
         
 <h2>Iniciar Sesión</h2>
+
+<?php if(isset($error)): ?>
+    <p style="color:red;"><?php echo $error; ?></p>
+<?php endif; ?>
 
 <form method="POST" action="index.php?controller=auth&action=login">
 
@@ -30,11 +32,13 @@
 
 </form>
 
-<p>¿No tienes cuenta?</p>
+<a href="index.php?controller=auth&action=register">Registrarse</a><br/>
 
-<a href="index.php?controller=auth&action=register">Registrarse</a>
+<a href="index.php?controller=auth&action=forgotPassword">Olvidé mi contraseña</a><br/><br>
 
 </div>
+</div>
+
 </div>
 
 </body>

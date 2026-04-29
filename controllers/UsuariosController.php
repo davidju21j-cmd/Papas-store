@@ -3,53 +3,51 @@
 require_once __DIR__."/../models/Usuarios.php";
 
 class UsuariosController{
-    public function index(){
-        $Usuarios=new Usuarios();
-        $datos=$Usuarios->mostrar();
 
-        require_once __DIR__."/../views/Usuarios/listar.php";
+    public function editar(){
+
+        $Usuarios = new Usuarios();
+
+        if($_POST){
+
+            if(!empty($_POST['contrasena'])){
+                $resultado = $Usuarios->updateConPassword($_POST);
+            } else {
+                $resultado = $Usuarios->update($_POST);
+            }
+
+            if(is_array($resultado)){
+                // aquí podrías manejar errores si quieres
+                return;
+            }
+
+            header("Location: index.php?controller=admin&action=usuarios");
+            exit;
+        }
     }
 
     public function crear(){
-        if($_POST){
-            $Usuarios=new Usuarios();
-            $U=$Usuarios->save(
-                $_POST['Nombre'],
-                $_POST['Apellido'],
-                $_POST['Documento'],
-                $_POST['Telefono'],
-                $_POST['Correo'],
-                $_POST['Direccion']
-            );
-            header("Location: index.php");
-        }
-        require __DIR__. "/../views/Usuarios/crear.php";
-    }
 
-    public function editar(){
-        $Usuarios=new Usuarios();
         if($_POST){
-            $U=$Usuarios->update(
-                $_POST['Nombre'],
-                $_POST['Apellido'],
-                $_POST['Documento'],
-                $_POST['Telefono'],
-                $_POST['Correo'],
-                $_POST['Direccion']
-            );
-            header("Location: index.php");
-        }
 
-        $datos=$Usuarios->GetByid($_GET['Id']);
-        require_once __DIR__."/../views/Usuarios/editar.php";
+            $Usuarios = new Usuarios();
+
+            $resultado = $Usuarios->crear($_POST);
+
+            if(is_array($resultado)){
+                // manejar errores si quieres
+                return;
+            }
+
+            header("Location: index.php?controller=admin&action=usuarios");
+            exit;
+        }
     }
 
     public function eliminar(){
-        $Usuarios=new Usuarios();
-        $U=$Usuarios->delete($_GET['Id']);
-        header("Location: index.php");
+        $Usuarios = new Usuarios();
+        $Usuarios->eliminar($_GET['Id']);
+        header("Location: index.php?controller=admin&action=usuarios");
     }
-
 }
-
 ?>

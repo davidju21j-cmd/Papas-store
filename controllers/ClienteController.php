@@ -12,11 +12,8 @@ class ClienteController{
             header("Location: index.php?controller=auth&action=login");
             exit;
         }
-        else{
 
         require_once __DIR__."/../views/Cliente/index.php";
-        }
     }
-
 }
 ?>

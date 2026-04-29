@@ -12,7 +12,7 @@ class EmpleadoController{
             header("Location: index.php?controller=auth&action=login");
             exit;
         }
-        echo "Panel Empleado";
+         require_once __DIR__."/../views/Empleado/index.php";
     }
 
 }

@@ -1,106 +1,157 @@
 <?php
 
-require_once __DIR__."/../config/db.php";
+require_once __DIR__ . "/../config/db.php";
 
 class Auth {
 
-    private $conexion;
+    private $db;
 
     public function __construct(){
-        $this->conexion = Database::Conectar();
+        $this->db = Database::Conectar();
     }
 
-    // LOGIN
-    public function login($correo,$password){
+    public function login($correo, $password){
 
-        $sql = $this->conexion->prepare("SELECT u.*, r.Nombre_rol
-            FROM usuarios u
-            INNER JOIN user_rol ur ON u.Id_usuarios = ur.id_usuario
-            INNER JOIN rol r ON r.Id_rol = ur.id_rol
-            WHERE u.Correo = ? LIMIT 1");
+        if(empty($correo) || empty($password)){
+            return false;
+        }
 
-        $sql->bind_param("s",$correo);
-        $sql->execute();
+        if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
+            return false;
+        }
 
-        $resultado = $sql->get_result();
+        $correo = $this->db->real_escape_string($correo);
 
-        if($resultado->num_rows > 0){
+        $sql = "SELECT * FROM Usuarios WHERE Correo='$correo'";
+        $result = $this->db->query($sql);
 
-            $usuario = $resultado->fetch_assoc();
+        if($result && $result->num_rows > 0){
 
-            if(password_verify($password,$usuario['Contraseña'])){
-                return $usuario;
+            $user = $result->fetch_assoc();
+
+            if(password_verify($password, $user['Contraseña'])){
+                return $user;
             }
         }
 
         return false;
     }
 
-    // REGISTER (CLIENTE POR DEFECTO)
-    public function register($datos){
-        
+    public function register($data){
+
         $errores = [];
-        $password_hash = password_hash($datos['password'],PASSWORD_DEFAULT);
 
-        $sql2= $this->conexion->prepare("SELECT Correo FROM usuarios WHERE Correo = ?");
-         
+        $nombre = trim($data['nombre'] ?? '');
+        $apellido = trim($data['apellido'] ?? '');
+        $documento = trim($data['documento'] ?? '');
+        $telefono = trim($data['telefono'] ?? '');
+        $correo = trim($data['correo'] ?? '');
+        $direccion = trim($data['direccion'] ?? '');
+        $password = $data['password'] ?? null;
 
-         $sql2->bind_param("s",$datos['correo']);
-         $sql2->execute();
+        // VALIDACIONES COMPLETAS
 
-         $resultado = $sql2->get_result();
+        if(empty($nombre) || !preg_match("/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/", $nombre)){
+            $errores[] = "Nombre inválido (solo letras)";
+        }
 
-         if($resultado->num_rows > 0){
-             $errores[] = "El correo ya está registrado";
-        
-         }
+        if(empty($apellido) || !preg_match("/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/", $apellido)){
+            $errores[] = "Apellido inválido (solo letras)";
+        }
 
-         if(count($errores) > 0){
-             return $errores;
-         }
+        if(empty($documento) || !ctype_digit($documento)){
+            $errores[] = "Documento inválido (solo números)";
+        }
 
-        $sql = $this->conexion->prepare("INSERT INTO usuarios
-            (Nombre,Apellido,Documento,Telefono,Correo,Direccion,Contraseña)
-            VALUES (?,?,?,?,?,?,?)");
+        if(empty($telefono) || !ctype_digit($telefono)){
+            $errores[] = "Teléfono inválido (solo números)";
+        }
 
-        $sql->bind_param("sssssss",
-            $datos['nombre'],
-            $datos['apellido'],
-            $datos['documento'],
-            $datos['telefono'],
-            $datos['correo'],
-            $datos['direccion'],
-            $password_hash
-        );
+        if(empty($correo) || !filter_var($correo, FILTER_VALIDATE_EMAIL)){
+            $errores[] = "Correo inválido";
+        }
 
-        if($sql->execute()){
+        if(empty($direccion) || strlen($direccion) < 5){
+            $errores[] = "Dirección inválida";
+        }
 
-            $id_usuario = $this->conexion->insert_id;
+        if(empty($password) || strlen($password) < 6){
+            $errores[] = "Contraseña mínima 6 caracteres";
+        }
 
-            // Buscar rol cliente
-            $rol = "Cliente";
+        if(!empty($errores)){
+            return $errores;
+        }
 
-            $sqlRol = $this->conexion->prepare("SELECT Id_rol FROM rol WHERE Nombre_rol = ? ");
+        // DUPLICADOS 
+        $checkSql = "SELECT * FROM Usuarios 
+                     WHERE Correo='$correo' 
+                     OR Telefono='$telefono'
+                     OR Documento='$documento'";
 
-            $sqlRol->bind_param("s",$rol);
-            $sqlRol->execute();
+        $checkResult = $this->db->query($checkSql);
 
-            $resultadoRol = $sqlRol->get_result();
+        if($checkResult && $checkResult->num_rows > 0){
 
-            if($fila = $resultadoRol->fetch_assoc()){
+            while($user = $checkResult->fetch_assoc()){
 
-                $id_rol = $fila['Id_rol'];
+                if($user['Correo'] == $correo){
+                    return ["Correo ya registrado"];
+                }
 
-                $sqlUserRol = $this->conexion->prepare("INSERT INTO user_rol (id_usuario,id_rol)
-                    VALUES (?,?)");
+                if($user['Telefono'] == $telefono){
+                    return ["Teléfono ya registrado"];
+                }
 
-                $sqlUserRol->bind_param("ii",$id_usuario,$id_rol);
-
-                return $sqlUserRol->execute();
+                if($user['Documento'] == $documento){
+                    return ["Documento ya registrado"];
+                }
             }
         }
 
-        return false;
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO Usuarios 
+        (Nombre, Apellido, Documento, Telefono, Correo, Direccion, Contraseña, Rol)
+        VALUES 
+        ('$nombre','$apellido','$documento','$telefono','$correo','$direccion','$passwordHash','cliente')";
+
+        return $this->db->query($sql);
+    }
+
+    public function buscarPorCorreo($correo){
+        $correo = $this->db->real_escape_string($correo);
+        $sql = "SELECT * FROM Usuarios WHERE Correo='$correo'";
+        $result = $this->db->query($sql);
+        return $result && $result->num_rows > 0 ? $result->fetch_assoc() : null;
+    }
+
+    public function guardarToken($correo, $token){
+        $correo = $this->db->real_escape_string($correo);
+        $token = $this->db->real_escape_string($token);
+        $sql = "UPDATE Usuarios SET token='$token', token_expiracion=DATE_ADD(NOW(), INTERVAL 1 HOUR) WHERE Correo='$correo'";
+        return $this->db->query($sql);
+    }
+
+    public function validarToken($token){
+        $token = $this->db->real_escape_string($token);
+        $sql = "SELECT * FROM Usuarios WHERE token='$token' AND token_expiracion > NOW()";
+        $result = $this->db->query($sql);
+        return $result && $result->num_rows > 0 ? $result->fetch_assoc() : null;
+    }
+
+    public function actualizarPassword($token, $passwordHash){
+        $token = $this->db->real_escape_string($token);
+        $passwordHash = $this->db->real_escape_string($passwordHash);
+        $sql = "UPDATE Usuarios SET Contraseña='$passwordHash', token=NULL, token_expiracion=NULL WHERE token='$token'";
+        return $this->db->query($sql);
+    }
+   public function resetPassword(){
+        $_GET['token'] = $this->db->real_escape_string($_GET['token']);
+        $token = $this->db->real_escape_string($token);
+        $sql = "SELECT * FROM Usuarios WHERE token='$token' AND token_expiracion > NOW()";
+        $result = $this->db->query($sql);
+        return $result && $result->num_rows > 0 ? $result->fetch_assoc() : null;
     }
 }
 ?>

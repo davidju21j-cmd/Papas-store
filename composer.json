@@ -1,0 +1,17 @@
+{
+    "name": "acer/papas-store",
+    "autoload": {
+        "psr-4": {
+            "Acer\\PapasStore\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "davidju21j",
+            "email": "davidju21j@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^7.0"
+    }
+}
